@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+	<!-- <ResponsivePopover placement="Left" showHeader="false" contentWidth="320px" contentHeight="250px">
+		<content> -->
+			<HBox fitContainer="true" renderType="Bare">
+				<SegmentedButton selectedKey="{requestPopover>/selectedTab}">
+					<items>
+						<SegmentedButtonItem key="{constant>/REQUEST}" text="{i18n>Request}"/>
+						<SegmentedButtonItem key="{constant>/RESPONSE}" text="{i18n>Response}"/>
+					</items>
+				</SegmentedButton>
+				<f:Form editable="false">
+					<f:layout>
+						<f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="5" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4"
+							emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+					</f:layout>
+					<f:FormContainer>
+						<f:FormElement label="Type">
+							<f:fields>
+								<Text text="{type}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="EntitySet">
+							<f:fields>
+								<Text text="{entitySet}"/>
+							</f:fields>
+						</f:FormElement>
+					</f:FormContainer>
+				</f:Form>
+			</HBox>
+		<!-- </content>
+	</ResponsivePopover> -->
+</core:FragmentDefinition>
