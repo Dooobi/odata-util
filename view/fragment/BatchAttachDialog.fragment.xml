@@ -1,0 +1,67 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns.l="sap.ui.layout">
+	<Dialog title="Batch Anfrage wählen" draggable="true" contentWidth="400px" contentHeight="200px">
+		<VBox alignItems="Center" fitContainer="true" renderType="Bare" class="sapUiMediumMarginBeginEnd">
+			<SegmentedButton width="100%" selectedKey="{dialogModel>/mode}">
+				<items>
+					<SegmentedButtonItem key="DIALOG_MODE_CHOOSE_EXISTING" text="Existierend" width="50%"/>
+					<SegmentedButtonItem key="DIALOG_MODE_CHOOSE_NEW" text="Neu" width="50%"/>
+				</items>
+			</SegmentedButton>
+			<f:Form editable="true" visible="{= ${dialogModel>/mode} === 'DIALOG_MODE_CHOOSE_EXISTING' }" width="100%">
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanXL="4"
+						labelSpanL="3"
+						labelSpanM="4"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="0"
+						emptySpanL="4"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsXL="2"
+						columnsL="1"
+						columnsM="1"
+						singleContainerFullSize="false"/>
+				</f:layout>
+				<f:FormContainer>
+					<f:FormElement label="Batch Anfrage">
+						<Select id="selectBatchRequest" items="{shared>/batchRequests}" width="100%" visible="{= ${dialogModel>/mode} === 'DIALOG_MODE_CHOOSE_EXISTING' }">
+							<core:Item text="{= ${shared>groupId} + ' (' +  ${shared>requests}.length + ')' }"/>
+						</Select>
+					</f:FormElement>
+				</f:FormContainer>
+			</f:Form>
+			<f:Form editable="true" visible="{= ${dialogModel>/mode} === 'DIALOG_MODE_CHOOSE_NEW' }" width="100%">
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanXL="4"
+						labelSpanL="3"
+						labelSpanM="4"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="0"
+						emptySpanL="4"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsXL="2"
+						columnsL="1"
+						columnsM="1"
+						singleContainerFullSize="false"/>
+				</f:layout>
+				<f:FormContainer>
+					<f:FormElement label="GroupId">
+						<Input value="{dialogModel>/data/groupId}" required="true"/>
+					</f:FormElement>
+					<f:FormElement label="Changeset">
+						<Input value="{dialogModel>/data/changeset}"/>
+					</f:FormElement>
+				</f:FormContainer>
+			</f:Form>
+		</VBox>
+		<buttons>
+			<Button text="Confirm" type="Accept" press="confirm"/>
+			<Button text="Cancel" type="Reject" press="closeDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

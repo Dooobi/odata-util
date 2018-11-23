@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns.l="sap.ui.layout">
+	<Dialog title="Löschen" draggable="true" contentWidth="400px" contentHeight="200px">
+		<Text text="Möchten Sie {dialogModel>/numberOfItems} Einträge löschen?"/>
+		<buttons>
+			<Button text="{i18n>entityDialogButtonBatch}" type="Accept" press="batch"/>
+			<Button text="{i18n>entityDialogButtonSend}" type="Accept" press="send"/>
+			<Button text="{i18n>entityDialogButtonCancel}" type="Reject" press="closeDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
