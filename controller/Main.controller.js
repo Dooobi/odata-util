@@ -66,6 +66,34 @@ sap.ui.define([
 		/* event handlers                                              */
 		/* =========================================================== */
 
+		onHomePress: function() {
+			var odata = this.getModel();
+
+			odata.setUseBatch(true);
+			odata.setDeferredGroups(["group1"]);
+
+			odata.create("/OrderHeaders", {
+				"Uuid": "uuid1",
+				"MarketplaceId": "MarketplaceId1",
+				"SubMarketplaceId": "SubMarketplaceId1",
+				"MpOrderId": "MpOrderId1"
+			}, {
+				groupId: "group1",
+				changeSetId: "changeset1"
+			});
+			odata.create("/OrderHeaders", {
+				"Uuid": "uuid1",
+				"MarketplaceId": "MarketplaceId1",
+				"SubMarketplaceId": "SubMarketplaceId1",
+				"MpOrderId": "MpOrderId1"
+			}, {
+				groupId: "group1",
+				changeSetId: "changeset1"
+			});
+			
+			odata.submitChanges();
+		},
+
 		transformMetadata: function() {
 			var odata = this.getModel(),
 				metaModel = metadataTransformer.transformMetadataToModel(odata);

@@ -11,7 +11,7 @@
 		},
 		"dataSources": {
 			"mainService": {
-				"uri": "https://marketplaceservicea3bb64753.hana.ondemand.com/marketplace-service/odata.srv/",
+				"uri": "/marketplace-service/odata.srv/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0"
