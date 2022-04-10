@@ -1,3 +1,4 @@
+# odata-util
 This is an [OpenUI5](https://openui5.org/) web app for visualizing OData v2 services.  
 
 It can display a list of all entity types contained in an OData service as well as their definition (properties, keys, complex types).  
