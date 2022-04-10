@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<CustomListItem>
+		<Panel>
+			<headerToolbar>
+				<Toolbar>
+					<Title text="{shared>functionImport/name}" class="sapUiTinyMarginBegin"/>
+					<ToolbarSpacer/>
+					<Label text="{shared>type}" class="sapUiTinyMarginEnd"/>
+				</Toolbar>
+			</headerToolbar>
+			<TextArea value="{shared>response/data}"/>
+		</Panel>
+	</CustomListItem>
+
+</core:FragmentDefinition>

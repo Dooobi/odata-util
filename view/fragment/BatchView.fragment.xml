@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page id="sideViewPage" showHeader="false">
+		<List items="{shared>/batchRequests}" noDataText="Keine Batch Anfragen">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="{= 'Batch Anfragen (' + ${shared>/batchRequests}.length + ')' }" titleStyle="H4"/>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://add" press="openAddBatchRequestDialog"/>
+				</Toolbar>
+			</headerToolbar>
+			<CustomListItem>
+				<Panel expandable="true" expanded="false" class="sapUiNoContentPadding">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="{= ${shared>groupId} + ' (' +  ${shared>requests}.length + ')' }"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://media-play" press="sendBatchRequest"/>
+							<Button icon="sap-icon://sys-cancel" press="deleteBatchRequest"/>
+						</Toolbar>
+					</headerToolbar>
+					<List items="{ path: 'shared>requests', factory: '.requestListItemFactory' }" noDataText="Keine Anfragen"/>
+				</Panel>
+			</CustomListItem>
+		</List>
+	</Page>
+
+</core:FragmentDefinition>

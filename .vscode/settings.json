@@ -1,0 +1,7 @@
+{
+    "liveServer.settings.proxy": {
+        "enable": true,
+        "baseUri": "/odata/",
+        "proxyUri": "https://services.odata.org/v2/northwind/northwind.svc/"
+    }
+}

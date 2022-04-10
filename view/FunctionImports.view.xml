@@ -1,0 +1,59 @@
+<mvc:View controllerName="demindh.odatautils.controller.FunctionImports" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:tnt="sap.tnt" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Page id="functionImportsPage" showHeader="false">
+		<HBox visible="false" alignItems="Center" class="sapUiTinyMargin">
+			<Label text="EntityContainer:" class="sapUiTinyMarginBeginEnd"/>
+			<Select enabled="false">
+				<core:Item key="1" text="DefaultDBContainer"/>
+			</Select>
+		</HBox>
+		<Panel headerText="{= 'FunctionImports (' + ${metaModel>/functionImports}.length + ')' }" class="sapUiNoContentPadding"/>
+		<VBox class="sapUiSmallMarginBeginEnd">
+			<List items="{metaModel>/functionImports}">
+				<CustomListItem>
+					<Panel expandable="true" expanded="false">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{metaModel>name}"/>
+							</Toolbar>
+						</headerToolbar>
+						<f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" labelSpanS="3" emptySpanL="3" emptySpanM="1" emptySpanS="0">
+							<Label text="Rückgabetyp"/>
+							<HBox justifyContent="SpaceBetween">
+								<Text text="{ parts: [{ path: 'metaModel>returnType' }, { path: 'metaModel>returnsCollection' }], formatter: '.formatter.getFunctionImportReturnType' }"/>
+								<HBox>
+									<Toolbar>
+										<Button type="Transparent" text="Batch" press="batch"/>
+										<ToolbarSeparator/>
+										<Button type="Transparent" text="Senden" press="send"/>
+									</Toolbar>
+								</HBox>
+							</HBox>
+							<Label text="Parameter"/>
+							<Table items="{ path: 'metaModel>parameters', factory: '.parameterListItemFactory' }" noDataText="Keine Parameter">
+								<columns>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column>
+										<Text text="Typ"/>
+									</Column>
+									<Column>
+										<Text text="Wert"/>
+									</Column>
+								</columns>
+								<!--<items>-->
+								<!--	<ColumnListItem>-->
+								<!--		<Label text="{metaModel>name}" required="{= ${metaModel>nullable} === 'false' }"/>-->
+								<!--		<Text text="{metaModel>type}"/>-->
+								<!--		<Input/>-->
+								<!--	</ColumnListItem>-->
+								<!--</items>-->
+							</Table>
+						</f:SimpleForm>
+					</Panel>
+				</CustomListItem>
+			</List>
+		</VBox>
+	</Page>
+</mvc:View>

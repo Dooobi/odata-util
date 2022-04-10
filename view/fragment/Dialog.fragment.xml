@@ -1,0 +1,38 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+
+	<Dialog id="createAndEditDialog" title="{= ${viewModel>/dialogMode} === 'CREATE' ? ${i18n>dialogTitleAdd} : ${i18n>dialogTitleEdit} }">
+		<f:Form>
+			<f:layout>
+				<f:ResponsiveGridLayout adjustLabelSpan="false"/>
+			</f:layout>
+			<f:FormContainer>
+				<f:FormElement label="{i18n>formSalesOrganisation}">
+					<ComboBox required="true" change="validateControl" editable="{= ${viewModel>/dialogMode} === 'CREATE'}" selectedKey="{ path: 'SalesOrganisation', type: 'sap.ui.model.type.String', constraints: { minLength: 1, maxLength: 4 } }" items="{ path: '/OrganisationStructures', sorter: { path: 'Description' }, filters: [{ path: 'OrganisationStructureTypeId', operator: 'EQ', value1: 'SalesOrganisation' }] }">
+						<core:Item key="{OrganisationStructureId}" text="{= ${Description} === ${OrganisationStructureId} ? ${Description} : ${OrganisationStructureId} }"/>
+					</ComboBox>
+				</f:FormElement>
+				<f:FormElement label="{i18n>formCustomerNumber}">
+					<Input required="true" change="validateControl" editable="{= ${viewModel>/dialogMode} === 'CREATE'}" value="{ path: 'CustomerNumber', type: 'sap.ui.model.type.String', constraints: { minLength: 1, maxLength: 10 } }"/>
+				</f:FormElement>
+				<f:FormElement label="{i18n>formCondition}">
+					<Input required="true" change="validateControl" editable="{= ${viewModel>/dialogMode} === 'CREATE'}" value="{ path: 'Condition', type: 'sap.ui.model.type.String', constraints: { minLength: 1, maxLength: 25 } }"/>
+				</f:FormElement>
+				<f:FormElement label="{i18n>formConditionErp}">
+					<Input required="true" change="validateControl" editable="{= ${viewModel>/dialogMode} === 'CREATE'}" value="{ path: 'ConditionERP', type: 'sap.ui.model.type.String', constraints: { minLength: 1, maxLength: 4 } }"/>
+				</f:FormElement>
+				<f:FormElement label="{i18n>formIsB2B}">
+					<CheckBox selected="{IsB2B}"/>
+				</f:FormElement>
+			</f:FormContainer>
+		</f:Form>
+		
+		<buttons>
+			<Button text="{i18n>dialogButtonSave}" type="Accept" press="saveConditionMapping"/>
+			<Button text="{i18n>dialogButtonCancel}" press="closeDialog"/>
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>

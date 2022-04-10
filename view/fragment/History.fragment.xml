@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page id="historyPage" showHeader="false">
+		<List headerText="{= 'History (' + ${shared>/history}.length + ')' }" mode="SingleSelectMaster" items="{ path: 'shared>/history', sorter: { path: 'responseReceivedTime', descending: true } }" selectionChange="pressHistory">
+			<CustomListItem busy="{= ${shared>response/status} === 'Pending' }" busyIndicatorDelay="0">
+				<Toolbar>
+					<core:Icon src="{ path: 'shared>response/status', formatter: '.formatter.formatResponseStatusIconSrc' }" color="{ path: 'shared>response/status', formatter: '.formatter.formatResponseStatusIconColor' }"/>
+					<Title text="{shared>entitySet/name}" titleStyle="H4"/>
+					<ToolbarSpacer/>
+					<Label text="{shared>type}"/>
+				</Toolbar>
+				<!--<Panel>-->
+				<!--	<headerToolbar>-->
+				<!--		<Toolbar>-->
+				<!--			<core:Icon src="{ path: 'shared>response/status', formatter: '.formatter.formatResponseStatusIconSrc' }" color="{ path: 'shared>response/status', formatter: '.formatter.formatResponseStatusIconColor' }"/>-->
+				<!--			<Title text="{shared>functionImport/name}" titleStyle="H4"/>-->
+				<!--			<ToolbarSpacer/>-->
+				<!--			<Label text="{shared>type}"/>-->
+				<!--		</Toolbar>-->
+				<!--	</headerToolbar>-->
+				<!--	<TextArea value="{shared>response/data/}"/>-->
+				<!--</Panel>-->
+			</CustomListItem>
+		</List>
+	</Page>
+
+</core:FragmentDefinition>

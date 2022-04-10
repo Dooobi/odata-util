@@ -1,0 +1,53 @@
+<mvc:View controllerName="demindh.odatautils.controller.Main" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:tnt="sap.tnt" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout">
+	<Page showHeader="false" enableScrolling="false">
+		<l:FixFlex>
+			<l:fixContent>
+				<tnt:ToolHeader>
+					<Button icon="sap-icon://home" type="Transparent" press="onHomePress">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Button>
+					<IconTabHeader id="iconTabHeader" selectedKey="entitiesView" select="onTabSelected" showOverflowSelectList="true"
+						backgroundDesign="Transparent">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true"/>
+						</layoutData>
+						<items>
+							<IconTabFilter key="entitiesView" text="Entitäten"></IconTabFilter>
+							<IconTabFilter key="functionImportsView" text="FunctionImports"></IconTabFilter>
+						</items>
+					</IconTabHeader>
+				</tnt:ToolHeader>
+			</l:fixContent>
+			<l:flexContent>
+				<l:ResponsiveSplitter id="splitter">
+					<l:PaneContainer id="paneContainer">
+						<l:SplitPane requiredParentWidth="400" id="default">
+							<NavContainer id="navContainer">
+								<pages>
+									<mvc:XMLView id="entitiesView" viewName="demindh.odatautils.view.Entities"/>
+									<mvc:XMLView id="functionImportsView" viewName="demindh.odatautils.view.FunctionImports"/>
+									<mvc:XMLView id="entityView" viewName="demindh.odatautils.view.Entity"/>
+								</pages>
+							</NavContainer>
+						</l:SplitPane>
+						<l:SplitPane requiredParentWidth="600" id="pane">
+							<l:ResponsiveSplitter id="splitterSideView">
+								<l:PaneContainer id="paneContainerSideView" orientation="Vertical">
+									<l:SplitPane requiredParentWidth="50">
+										<core:Fragment fragmentName="demindh.odatautils.view.fragment.History" type="XML"/>
+									</l:SplitPane>
+									<l:SplitPane requiredParentWidth="50">
+										<core:Fragment fragmentName="demindh.odatautils.view.fragment.BatchView" type="XML"/>
+									</l:SplitPane>
+								</l:PaneContainer>
+							</l:ResponsiveSplitter>
+						</l:SplitPane>
+					</l:PaneContainer>
+				</l:ResponsiveSplitter>
+			</l:flexContent>
+		</l:FixFlex>
+	</Page>
+</mvc:View>

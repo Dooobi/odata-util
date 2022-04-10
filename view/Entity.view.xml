@@ -1,0 +1,18 @@
+<mvc:View controllerName="demindh.odatautils.controller.Entity" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:tnt="sap.tnt" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:control="demindh.odatautils.control">
+	<Page id="entityPage" showHeader="false">
+		<VBox class="sapUiSmallMarginBeginEnd">
+			<control:CustomTable id="entityTable" modelContextChange="onModelContextChange" selectionBehavior="Row" dblClick="openUpdateEntityDialog"
+				columns="{ path: 'metaModel>entityType/properties', sorter: [{ path: 'isPrimaryKey', descending: true }, { path: 'classification', descending: true }, { path: 'name' }], filters: [{ path: 'classification', operator: 'NE', value1: 'ComplexType'}], factory: '.entityTableColumnFactory' }">
+				<control:toolbar>
+					<Toolbar>
+						<Title text="{metaModel>name}"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" press="openDeleteDialog"/>
+						<Button icon="sap-icon://add" press="openAddEntityDialog"/>
+					</Toolbar>
+				</control:toolbar>
+			</control:CustomTable>
+		</VBox>
+	</Page>
+</mvc:View>

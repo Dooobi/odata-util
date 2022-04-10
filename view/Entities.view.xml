@@ -1,0 +1,31 @@
+<mvc:View controllerName="demindh.odatautils.controller.Entities" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:tnt="sap.tnt" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout">
+	<Page id="entitiesPage" showHeader="false">
+		<Panel headerText="{= 'Entitäten (' + ${metaModel>/entitySets}.length + ')' }" class="sapUiNoContentPadding"/>
+		<l:Grid defaultSpan="XL4 L4 M4 S6" content="{ path: 'metaModel>/entitySets', sorter: { path: 'name' } }" class="sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
+			<Panel class="sapUiNoContentPadding" expandable="true" expanded="false">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{metaModel>name}"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://table-view" press="navToEntity"/>
+					</Toolbar>
+				</headerToolbar>
+				<List items="{ path: 'metaModel>entityType/properties', sorter: [{ path: 'isPrimaryKey', descending: true }, { path: 'classification', descending: true }, { path: 'name' }], filters: [{ path: 'classification', operator: 'EQ', value1: 'EntityProperty' }] }">
+					<!--<StandardListItem title="{metaModel>name}" info="{metaModel>type}" icon="sap-icon://primary-key"/>-->
+					<CustomListItem>
+						<HBox class="sapUiTinyMarginTop sapUiTinyMarginEnd">
+							<VBox width="1.0em" class="sapUiTinyMarginBeginEnd">
+								<core:Icon src="sap-icon://primary-key" color="#878787" visible="{metaModel>isPrimaryKey}" size="1.0em"/>
+							</VBox>
+							<HBox justifyContent="SpaceBetween" width="100%">
+								<Title text="{= ${metaModel>classification} === 'ComplexProperty' ? ${metaModel>complexType/name} + '.' + ${metaModel>name} : ${metaModel>name} }" titleStyle="{= ${metaModel>isPrimaryKey} ? 'H5' : 'H6' }"/>
+								<Label text="{metaModel>type}"/>
+							</HBox>
+						</HBox>
+					</CustomListItem>
+				</List>
+			</Panel>
+		</l:Grid>
+	</Page>
+</mvc:View>

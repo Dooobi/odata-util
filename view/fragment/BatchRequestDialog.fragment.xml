@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns.l="sap.ui.layout">
+	<Dialog title="{dialogModel>/dialogTitle}" draggable="true">
+		<f:Form editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false"/>
+			</f:layout>
+			<f:FormContainer>
+				<f:FormElement label="GroupId">
+					<Input value="{dialogModel>/data/groupId}" required="true"/>
+				</f:FormElement>
+				<f:FormElement label="Changeset">
+					<Input value="{dialogModel>/data/changeset}"/>
+				</f:FormElement>
+			</f:FormContainer>
+		</f:Form>
+		<buttons>
+			<Button text="Confirm" type="Accept" press="save"/>
+			<Button text="Cancel" type="Reject" press="closeDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
